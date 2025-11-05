@@ -19,25 +19,25 @@ class UserTableSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
                 'password' => bcrypt('admin'),
-                'role' =>  UserRole::Admin,
+                'role' =>  UserRole::ADMIN,
             ],
             [
                 'name' => 'Driver1',
                 'email' => 'driver1@transin.com',
                 'password' => bcrypt('password'),
-                'role' => UserRole::Driver,
+                'role' => UserRole::DRIVER,
             ],
             [
                 'name' => 'Driver2',
                 'email' => 'driver2@transin.com',
                 'password' => bcrypt('password'),
-                'role' => UserRole::Driver,
+                'role' => UserRole::DRIVER,
             ],
             [
                 'name' => 'Driver3',
                 'email' => 'driver3@transin.com',
                 'password' => bcrypt('password'),
-                'role' => UserRole::Driver,
+                'role' => UserRole::DRIVER,
             ],
         ]);
     }
