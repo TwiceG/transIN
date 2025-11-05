@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\DeliveryStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,13 @@ return new class extends Migration
             $table->text('destination_address');
             $table->string('recipient_name');
             $table->string('recipient_phone');
-            $table->enum('status', ['accepted', 'distributed', 'in_transit', 'delivered', 'failed'])->default('accepted');
+            $table->enum('status', [
+                DeliveryStatus::ACCEPTED->value,
+                DeliveryStatus::DISTRIBUTED->value,
+                DeliveryStatus::IN_TRANSIT->value,
+                DeliveryStatus::DELIVERED->value,
+                DeliveryStatus::FAILED->value,
+            ])->default(DeliveryStatus::ACCEPTED->value);
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
             $table->timestamps();
         });

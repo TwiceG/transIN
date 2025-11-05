@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\UserRole;
 
 return new class extends Migration
 {
@@ -15,7 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role');
+            $table->enum('role', [
+                UserRole::Admin->value,
+                UserRole::Driver->value,
+            ])->default(UserRole::Driver->value);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
