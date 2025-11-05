@@ -13,40 +13,31 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate(
-            ['email' => 'admin@admin.com'],
+        User::insert([
             [
                 'name' => 'Admin',
+                'email' => 'admin@admin.com',
                 'password' => bcrypt('admin'),
                 'role' => 'admin',
-            ]
-        );
-
-        User::updateOrCreate(
-            ['email' => 'driver1@transin.com'],
+            ],
             [
                 'name' => 'Driver1',
+                'email' => 'driver1@transin.com',
                 'password' => bcrypt('password'),
                 'role' => 'driver',
-            ]
-        );
-
-        User::updateOrCreate(
-            ['email' => 'driver2@transin.com'],
+            ],
             [
                 'name' => 'Driver2',
+                'email' => 'driver2@transin.com',
                 'password' => bcrypt('password'),
                 'role' => 'driver',
-            ]
-        );
-
-        User::updateOrCreate(
-            ['email' => 'driver3@transin.com'],
+            ],
             [
                 'name' => 'Driver3',
+                'email' => 'driver3@transin.com',
                 'password' => bcrypt('password'),
                 'role' => 'driver',
-            ]
-        );
+            ],
+        ]);
     }
 }
