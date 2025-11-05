@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->enum('role', [
-                UserRole::Admin->value,
-                UserRole::Driver->value,
-            ])->default(UserRole::Driver->value);
+                UserRole::ADMIN->value,
+                UserRole::DRIVER->value,
+            ])->default(UserRole::DRIVER->value);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
