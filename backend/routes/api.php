@@ -21,4 +21,5 @@ Route::middleware(['auth:sanctum', 'role:' . UserRole::ADMIN->value])->group(fun
 // Driver routes
 Route::middleware(['auth:sanctum', 'role:' . UserRole::DRIVER->value])->group(function () {
     Route::get('/driver-jobs-list/{driverId}', [DeliveryJobController::class, 'listDriverJobs']);
+    Route::patch('/update-delivery-status', [DeliveryJobController::class, 'updateDeliveryStatus']);
 });

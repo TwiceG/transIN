@@ -60,4 +60,20 @@ class DeliveryJobRepository
     {
         return DeliveryJob::where('user_id', $driverId)->get();
     }
+
+    public function updateDeliveryStatus($data)
+    {
+        $jobId = $data['job_id'];
+        $job = DeliveryJob::find($jobId);
+
+        if (!$job) {
+            return null;
+        }
+
+        $job->update([
+            'status' => $data['status']
+        ]);
+
+        return $job;
+    }
 }

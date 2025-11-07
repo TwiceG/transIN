@@ -105,4 +105,23 @@ class DeliveryJobController extends Controller
     {
         return $this->deliveryJobRepo->listJobsByDriver($driverId);
     }
+
+    public function updateDeliveryStatus(Request $request)
+    {
+        $data = $this->toSnakeKeys($request->validate([
+            'jobId' => 'required',
+            'status' => 'required|string|in:distributed,in_transit,delivered,failed',
+        ]));
+
+        $job = $this->deliveryJobRepo->updateDeliveryStatus($data);
+
+        if (!$job) {
+            return response()->json(['message' => 'Delivery job not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json([
+            'message' => 'Delivery status updated successfully',
+            'job' => $job
+        ], Response::HTTP_OK);
+    }
 }
