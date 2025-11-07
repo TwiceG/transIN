@@ -13,13 +13,14 @@ class DeliveryJobTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $adminId = 1;
         DeliveryJob::insert([
             [
                 'starting_address' => '123 Main Street, Cityville',
                 'destination_address' => '456 Elm Avenue, Townsville',
                 'recipient_name' => 'John Doe',
                 'recipient_phone' => '555-1234',
-                'user_id' => 1,
+                'user_id' => $adminId,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -28,7 +29,7 @@ class DeliveryJobTableSeeder extends Seeder
                 'destination_address' => '12 Pine Street, Riverdale',
                 'recipient_name' => 'Jane Smith',
                 'recipient_phone' => '555-5678',
-                'user_id' => 1,
+                'user_id' => $adminId,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -37,7 +38,7 @@ class DeliveryJobTableSeeder extends Seeder
                 'destination_address' => '88 Birch Blvd, Lakeside',
                 'recipient_name' => 'Bob Johnson',
                 'recipient_phone' => '555-9999',
-                'user_id' => 1,
+                'user_id' => $adminId,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
