@@ -80,4 +80,23 @@ class DeliveryJobController extends Controller
             'job' => $job
         ], Response::HTTP_OK);
     }
+
+    public function assignDriver(Request $request)
+    {
+        $data = $this->toSnakeKeys($request->validate([
+            'driverId' => 'required',
+            'jobId' => 'required',
+        ]));
+
+        $job = $this->deliveryJobRepo->assignDriver($data);
+
+        if (!$job) {
+            return response()->json(['message' => 'Delivery job not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json([
+            'message' => "Driver {$data['driver_id']} has been assigned to job {$data['job_id']}.",
+            'job' => $job
+        ], Response::HTTP_OK);
+    }
 }

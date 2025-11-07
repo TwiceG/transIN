@@ -39,4 +39,20 @@ class DeliveryJobRepository
         $job->update($data);
         return $job;
     }
+
+    public function assignDriver($data)
+    {
+        $jobId = $data['job_id'];
+        $job = DeliveryJob::find($jobId);
+
+        if (!$job) {
+            return null;
+        }
+
+        $job->update([
+            'user_id' => $data['driver_id']
+        ]);
+
+        return $job;
+    }
 }
