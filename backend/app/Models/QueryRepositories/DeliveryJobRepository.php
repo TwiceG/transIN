@@ -55,4 +55,9 @@ class DeliveryJobRepository
 
         return $job;
     }
+
+    public function listJobsByDriver($driverId)
+    {
+        return DeliveryJob::where('user_id', $driverId)->get();
+    }
 }

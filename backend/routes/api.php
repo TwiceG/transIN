@@ -11,9 +11,14 @@ Route::post('/login', [UserController::class, 'login']);
 
 // Admin routes
 Route::middleware(['auth:sanctum', 'role:' . UserRole::ADMIN->value])->group(function () {
-    Route::get('/delivery-jobs-list', [DeliveryJobController::class, 'listJobs']);
+    Route::get('/delivery-jobs-list', [DeliveryJobController::class, 'listAllJobs']);
     Route::get('/drivers-list', [UserController::class, 'listDrivers']);
     Route::post('/create-job', [DeliveryJobController::class, 'createDeliveryJob']);
     Route::patch('/update-job/{jobId}', [DeliveryJobController::class, 'updateDeliveryJob']);
     Route::patch('/assign-driver', [DeliveryJobController::class, 'assignDriver']);
+});
+
+// Driver routes
+Route::middleware(['auth:sanctum', 'role:' . UserRole::DRIVER->value])->group(function () {
+    Route::get('/driver-jobs-list/{driverId}', [DeliveryJobController::class, 'listDriverJobs']);
 });

@@ -28,7 +28,7 @@ class DeliveryJobController extends Controller
 
 
     // Admin activities 
-    public function listJobs()
+    public function listAllJobs()
     {
         return $this->deliveryJobRepo->getJobs();
     }
@@ -98,5 +98,11 @@ class DeliveryJobController extends Controller
             'message' => "Driver {$data['driver_id']} has been assigned to job {$data['job_id']}.",
             'job' => $job
         ], Response::HTTP_OK);
+    }
+
+    // Driver activities
+    public function listDriverJobs($driverId)
+    {
+        return $this->deliveryJobRepo->listJobsByDriver($driverId);
     }
 }
