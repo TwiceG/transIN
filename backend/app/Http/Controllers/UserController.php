@@ -8,18 +8,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-    private $userRepository;
+    private $userRepo;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepo)
     {
-        $this->userRepository = $userRepository;
+        $this->userRepo = $userRepo;
     }
 
     public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
 
-        $user = $this->userRepository->login($credentials);
+        $user = $this->userRepo->login($credentials);
 
         if (!$user) {
             return response()->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
