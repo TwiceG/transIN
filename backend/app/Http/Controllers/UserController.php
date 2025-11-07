@@ -33,4 +33,11 @@ class UserController extends Controller
             'message' => 'You are now Logged in'
         ], Response::HTTP_OK);
     }
+
+
+
+    public function listDrivers()
+    {
+        return $this->userRepo->listDrivers();
+    }
 }
