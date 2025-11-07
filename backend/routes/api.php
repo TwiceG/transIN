@@ -8,5 +8,10 @@ use App\Http\Controllers\DeliveryJobController;
 
 Route::post('/login', [UserController::class, 'login']);
 
-Route::middleware(['auth:sanctum', 'role:' . UserRole::ADMIN->value])
-    ->get('/delivery-job-list', [DeliveryJobController::class, 'listJobs']);
+
+// Admin routes
+Route::middleware(['auth:sanctum', 'role:' . UserRole::ADMIN->value])->group(function () {
+    Route::get('/delivery-job-list', [DeliveryJobController::class, 'listJobs']);
+    Route::post('/create-job', [DeliveryJobController::class, 'createDeliveryJob']);
+    Route::patch('/update-job/{jobId}', [DeliveryJobController::class, 'updateDeliveryJob']);
+});
