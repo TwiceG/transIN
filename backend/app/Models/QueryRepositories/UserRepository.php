@@ -10,12 +10,13 @@ use App\Enums\UserRole;
 
 class UserRepository
 {
-    // Register a new user
-    public function register($data)
+    // Register a new Driver
+    public function registerDriver($data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role' => UserRole::DRIVER->value,
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -27,6 +28,11 @@ class UserRepository
             $user = Auth::user();
             return $user;
         }
+    }
+
+    public function getUserByEmail($email)
+    {
+        return User::where('email', $email)->first();
     }
 
     public function listDrivers()

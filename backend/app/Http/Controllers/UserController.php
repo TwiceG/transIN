@@ -34,6 +34,28 @@ class UserController extends Controller
         ], Response::HTTP_OK);
     }
 
+    public function register(Request $request)
+    {
+        // Check if email is already registered
+        $existingUser = $this->userRepo->getUserByEmail($request->email);
+        if ($existingUser) {
+            return response()->json(['message' => 'Email already taken.'], Response::HTTP_CONFLICT);
+        }
+
+        // Register Driver
+        $data = $request->only(['name', 'email', 'password']);
+        $user = $this->userRepo->registerDriver($data);
+
+        return response()->json(['user' => $user], Response::HTTP_CREATED);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logged out successfully'], Response::HTTP_OK);
+    }
+
 
 
     public function listDrivers()

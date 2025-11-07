@@ -7,6 +7,9 @@ use App\Enums\UserRole;
 use App\Http\Controllers\DeliveryJobController;
 
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
+
+Route::middleware('auth:sanctum')->post('/logout', [UserController::class, 'logout']);
 
 
 // Admin routes
