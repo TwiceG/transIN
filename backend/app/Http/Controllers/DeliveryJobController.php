@@ -81,6 +81,18 @@ class DeliveryJobController extends Controller
         ], Response::HTTP_OK);
     }
 
+    public function deleteJob($jobId)
+    {
+        $response = $this->deliveryJobRepo->deleteDeliveryJob($jobId);
+
+        if (!$response) {
+            return response()->json(['message' => 'Could not delete, delivery job not found'], Response::HTTP_NOT_FOUND);
+        }
+        return response()->json([
+            'message' => "Delivery {$jobId} job deleted successfully",
+        ], Response::HTTP_OK);
+    }
+
     public function assignDriver(Request $request)
     {
         $data = $this->toSnakeKeys($request->validate([

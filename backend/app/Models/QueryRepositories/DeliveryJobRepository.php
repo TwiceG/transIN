@@ -40,6 +40,17 @@ class DeliveryJobRepository
         return $job;
     }
 
+    public function deleteDeliveryJob($jobId)
+    {
+        $job = DeliveryJob::find($jobId);
+
+        if (!$job) {
+            return null;
+        }
+
+        return $job->delete();
+    }
+
     public function assignDriver($data)
     {
         $jobId = $data['job_id'];

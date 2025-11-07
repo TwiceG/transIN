@@ -15,6 +15,7 @@ Route::middleware(['auth:sanctum', 'role:' . UserRole::ADMIN->value])->group(fun
     Route::get('/drivers-list', [UserController::class, 'listDrivers']);
     Route::post('/create-job', [DeliveryJobController::class, 'createDeliveryJob']);
     Route::patch('/update-job/{jobId}', [DeliveryJobController::class, 'updateDeliveryJob']);
+    Route::delete('/delete-job/{jobId}', [DeliveryJobController::class, 'deleteJob']);
     Route::patch('/assign-driver', [DeliveryJobController::class, 'assignDriver']);
 });
 
