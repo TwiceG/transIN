@@ -61,7 +61,8 @@ class DeliveryJobRepository
         }
 
         $job->update([
-            'user_id' => $data['driver_id']
+            'user_id' => $data['driver_id'],
+            'status' => DeliveryStatus::DISTRIBUTED->value
         ]);
 
         return $job;
@@ -82,7 +83,7 @@ class DeliveryJobRepository
         }
 
         $job->update([
-            'status' => $data['status']
+            'status' => $data['delivery_status']
         ]);
 
         return $job;
