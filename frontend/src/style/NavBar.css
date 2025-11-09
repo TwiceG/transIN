@@ -1,0 +1,50 @@
+
+nav {
+    background-color: #6b5b95; 
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;       /* stick to top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; /* left and right sections */
+    align-items: center;
+    padding-right: 30px;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-left a,
+.nav-right a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+    color: #f8b400;
+}
+
+.nav-right p {
+    margin: 0;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Add spacing to prevent content from being hidden under navbar */
+body {
+    padding-top: 60px; 
+}
