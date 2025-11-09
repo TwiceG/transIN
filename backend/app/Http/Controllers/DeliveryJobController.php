@@ -35,12 +35,12 @@ class DeliveryJobController extends Controller
 
     public function createDeliveryJob(Request $request)
     {
-        $data = $this->toSnakeKeys($request->validate([
-            'startingAddress' => 'required|string',
-            'destinationAddress' => 'required|string',
-            'recipientName' => 'required|string',
-            'recipientPhone' => 'required|string',
-        ]));
+        $data = $request->validate([
+            'starting_address' => 'required|string',
+            'destination_address' => 'required|string',
+            'recipient_name' => 'required|string',
+            'recipient_phone' => 'required|string',
+        ]);
 
         $job = $this->deliveryJobRepo->createDeliveryJob($data);
 
@@ -61,13 +61,13 @@ class DeliveryJobController extends Controller
 
     public function updateDeliveryJob(Request $request, $jobId)
     {
-        $data = $this->toSnakeKeys($request->validate([
-            'startingAddress' => 'sometimes|string',
-            'destinationAddress' => 'sometimes|string',
-            'recipientName' => 'sometimes|string',
-            'recipientPhone' => 'sometimes|string',
+        $data = $request->validate([
+            'starting_address' => 'sometimes|string',
+            'destination_address' => 'sometimes|string',
+            'recipient_name' => 'sometimes|string',
+            'recipient_phone' => 'sometimes|string',
             'status' => 'sometimes|string|in:accepted,distributed,in_transit,delivered,failed',
-        ]));
+        ]);
 
         $job = $this->deliveryJobRepo->updateDeliveryJob($jobId, $data);
 
@@ -122,7 +122,7 @@ class DeliveryJobController extends Controller
     {
         $data = $this->toSnakeKeys($request->validate([
             'jobId' => 'required',
-            'status' => 'required|string|in:distributed,in_transit,delivered,failed',
+            'deliveryStatus' => 'required|string|in:distributed,in_transit,delivered,failed',
         ]));
 
         $job = $this->deliveryJobRepo->updateDeliveryStatus($data);
