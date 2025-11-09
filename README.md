@@ -20,7 +20,7 @@ The project provides a clean API, secure authentication, and a responsive interf
   - [Second step](#second-step)
   - [Third step](#third-step)
 - [Frontend Setup](#frontend-setup)
-- [Conclusion](#conclusion)V
+- [Conclusion](#conclusion)
 - [Contact](#contact)
 
 ## Prerequisites
